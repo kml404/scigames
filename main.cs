@@ -24,6 +24,7 @@ class MainClass {
   public static void Main (string[] args) 
   {
     int BirthYear, DeathYear, CurrentYear;
+    int Longevity;
 
     //Initialize the number of living people to 0
     for (CurrentYear = 0; CurrentYear <= 100; CurrentYear++) 
@@ -44,7 +45,14 @@ class MainClass {
     //Count the number of people alive in each year
     for (CurrentYear = 0; CurrentYear <= 100; CurrentYear++)
     {
-
+      if (People[CurrentYear].Count > 0)
+      {
+         Longevity = People[CurrentYear].Max();
+         for (int i = 0; i <= Longevity; i++)
+         {
+           NumAlive[CurrentYear+i] += People[CurrentYear].FindAll(m => m >= i).Count();
+         }
+      }
     }
 
     //Maximum number of people alive in any given year
