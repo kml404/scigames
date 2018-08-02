@@ -57,10 +57,14 @@ class MainClass {
 
     //Maximum number of people alive in any given year
     int MaxAlive = NumAlive.Max();
+    List<int> YearsMax = new List<int>(0);
 
-    //(Earliest) year where this maximum is achieved
-    int YearMax = 1900 + Array.IndexOf(NumAlive, MaxAlive);
+    //Year(s) where this maximum is achieved
+    for (int i = 0; i < NumAlive.Length; i++)
+    {
+      if (NumAlive[i] == MaxAlive) {YearsMax.Add(1900+i);}
+    }
 
-    Console.WriteLine ("The maximum number of people alive, " + MaxAlive + ", is achieved in year " + YearMax);
+    Console.WriteLine ("The maximum number of people alive, " + MaxAlive + ", is achieved in year(s) " + String.Join(",",YearsMax));
   }
 }
